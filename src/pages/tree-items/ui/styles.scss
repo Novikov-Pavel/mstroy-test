@@ -1,0 +1,26 @@
+.tree-items-page {
+  min-height: 100vh;
+  padding: 24px;
+
+  &__header {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+
+  &__subtitle {
+    margin: 0;
+    color: #6b7280;
+  }
+
+  &__content {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+    padding: 16px;
+  }
+}
