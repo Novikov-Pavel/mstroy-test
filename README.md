@@ -123,7 +123,7 @@ import { TreeStore } from '@entities/tree-item'
 
 ## Архитектура (FSD)
 
-Структура по [Feature-Sliced Design](https://feature-sliced.design/), ориентир — [fsd-vue-antd](https://github.com/hoachnt/fsd-vue-antd/tree/main/src):
+Структура по [Feature-Sliced Design](https://feature-sliced.design/):
 
 ```
 src/
