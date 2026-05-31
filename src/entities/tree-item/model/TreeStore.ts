@@ -3,8 +3,8 @@ import {
   TreeItemDuplicateError,
   TreeItemInvalidParentError,
   TreeItemNotFoundError,
-} from '@shared/lib/errors'
-import type { TreeItem, TreeItemId } from '@shared/types'
+} from '../lib/errors'
+import type { TreeItem, TreeItemId } from '@shared/model'
 
 const ROOT_KEY = Symbol('tree-root')
 

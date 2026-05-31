@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { shallowRef } from 'vue'
-import { TreeStore, INITIAL_TREE_ITEMS } from '@entities/tree-item'
+import { TreeStore } from '@entities/tree-item'
+import { MOCK_TREE_ITEMS } from '@shared/config'
 import {
   createTreeGridOptions,
   getTreeRowId,
@@ -29,11 +30,11 @@ describe('useTreeGrid', () => {
 
   it('useTreeGrid формирует rowData и колонки', () => {
     const store = shallowRef(
-      new TreeStore(INITIAL_TREE_ITEMS.map((item) => ({ ...item }))),
+      new TreeStore(MOCK_TREE_ITEMS.map((item) => ({ ...item }))),
     )
     const { rowData, columnDefs, autoGroupColumnDef } = useTreeGrid(store)
 
-    expect(rowData.value).toHaveLength(INITIAL_TREE_ITEMS.length)
+    expect(rowData.value).toHaveLength(MOCK_TREE_ITEMS.length)
     expect(columnDefs).toHaveLength(2)
     expect(columnDefs[0]?.headerName).toBe('№ п/п')
     expect(columnDefs[1]?.headerName).toBe('Наименование')
@@ -43,7 +44,7 @@ describe('useTreeGrid', () => {
 
   it('onGridReady передаёт rowData и перемещает auto group column', () => {
     const store = shallowRef(
-      new TreeStore(INITIAL_TREE_ITEMS.map((item) => ({ ...item }))),
+      new TreeStore(MOCK_TREE_ITEMS.map((item) => ({ ...item }))),
     )
     const { rowData, onGridReady } = useTreeGrid(store)
 

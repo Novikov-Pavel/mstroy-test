@@ -4,13 +4,13 @@ import {
   TreeItemDuplicateError,
   TreeItemInvalidParentError,
   TreeItemNotFoundError,
-} from '@shared/lib/errors'
-import type { TreeItem } from '@shared/types'
-import { INITIAL_TREE_ITEMS } from '../config/initialItems'
+} from '../lib/errors'
+import type { TreeItem } from '@shared/model'
+import { MOCK_TREE_ITEMS } from '@shared/config'
 import { TreeStore } from './TreeStore'
 
 function cloneItems(): TreeItem[] {
-  return INITIAL_TREE_ITEMS.map((item) => ({ ...item }))
+  return MOCK_TREE_ITEMS.map((item) => ({ ...item }))
 }
 
 describe('TreeStore', () => {
@@ -24,7 +24,7 @@ describe('TreeStore', () => {
     it('getAll возвращает исходный массив хранилища', () => {
       const all = store.getAll()
 
-      expect(all).toHaveLength(INITIAL_TREE_ITEMS.length)
+      expect(all).toHaveLength(MOCK_TREE_ITEMS.length)
       expect(all).toBe(store.getAll())
     })
 
@@ -98,7 +98,7 @@ describe('TreeStore', () => {
 
       expect(store.getItem(99).label).toBe('Новый лист')
       expect(store.getChildren(8).map((item) => item.id)).toContain(99)
-      expect(store.getAll()).toHaveLength(INITIAL_TREE_ITEMS.length + 1)
+      expect(store.getAll()).toHaveLength(MOCK_TREE_ITEMS.length + 1)
     })
 
     it('бросает TreeItemDuplicateError при повторном id', () => {

@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { TreeStore, INITIAL_TREE_ITEMS } from '@entities/tree-item'
+import { TreeStore } from '@entities/tree-item'
+import { MOCK_TREE_ITEMS } from '@shared/config'
 import { mapStoreToGridRows, resolveRowCategory } from './mapStoreToGridRows'
 
 describe('mapStoreToGridRows', () => {
-  const store = new TreeStore(INITIAL_TREE_ITEMS.map((item) => ({ ...item })))
+  const store = new TreeStore(MOCK_TREE_ITEMS.map((item) => ({ ...item })))
 
   it('resolveRowCategory возвращает Группа/Элемент', () => {
     expect(resolveRowCategory(true)).toBe('Группа')
@@ -14,7 +15,7 @@ describe('mapStoreToGridRows', () => {
     const rows = mapStoreToGridRows(store)
     const row7 = rows.find((row) => row.id === 7)
 
-    expect(rows).toHaveLength(INITIAL_TREE_ITEMS.length)
+    expect(rows).toHaveLength(MOCK_TREE_ITEMS.length)
     expect(row7?.category).toBe('Элемент')
     expect(rows.find((row) => row.id === 1)?.category).toBe('Группа')
   })

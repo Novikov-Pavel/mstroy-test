@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import type { TreeItem, TreeItemId } from '@shared/types'
+import type { TreeItem, TreeItemId } from '@shared/model'
 import { TreeStore } from './TreeStore'
 
 interface BenchmarkSample {

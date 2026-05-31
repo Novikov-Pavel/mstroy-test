@@ -15,12 +15,12 @@
 
 <script setup lang="ts">
 import { shallowRef } from 'vue'
-import { INITIAL_TREE_ITEMS, TreeStore } from '@entities/tree-item'
+import { createInitialTreeStore } from '@features/init-tree-items'
 import { TreeItemsTable } from '@widgets/tree-items-table'
 
-const store = shallowRef(new TreeStore([...INITIAL_TREE_ITEMS]))
+const store = shallowRef(createInitialTreeStore())
 </script>
 
 <style scoped lang="scss">
-@import './styles.scss';
+@use './styles.scss';
 </style>

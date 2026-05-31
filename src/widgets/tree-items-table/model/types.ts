@@ -1,4 +1,4 @@
-import type { TreeItem } from '@shared/types'
+import type { TreeItem } from '@shared/model'
 
 export type TreeRowCategory = 'Группа' | 'Элемент'
 

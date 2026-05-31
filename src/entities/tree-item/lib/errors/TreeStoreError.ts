@@ -1,5 +1,5 @@
-import { AppError, type AppErrorOptions } from './AppError'
-import type { TreeItemId } from '@shared/types/tree'
+import { AppError, type AppErrorOptions } from '@shared/lib/errors'
+import type { TreeItemId } from '@shared/model'
 
 export class TreeStoreError extends AppError {
   constructor(message: string, options: AppErrorOptions = {}) {

@@ -41,5 +41,5 @@ function handleGridReady(event: GridReadyEvent): void {
 </script>
 
 <style scoped lang="scss">
-@import './styles.scss';
+@use './styles.scss';
 </style>

@@ -1,4 +1,3 @@
-export { TreeStore } from './model'
 export {
   TreeStoreError,
   TreeItemNotFoundError,
@@ -6,4 +5,4 @@ export {
   TreeItemInvalidParentError,
   TreeItemCircularReferenceError,
   isTreeStoreError,
-} from './lib/errors'
+} from './TreeStoreError'

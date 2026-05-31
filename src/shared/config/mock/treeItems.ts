@@ -1,6 +1,6 @@
-import type { TreeItem } from '@shared/types'
+import type { TreeItem } from '@shared/model'
 
-export const INITIAL_TREE_ITEMS: TreeItem[] = [
+export const MOCK_TREE_ITEMS: TreeItem[] = [
   { id: 1, parent: null, label: 'Айтем 1' },
   { id: '91064cee', parent: 1, label: 'Айтем 2' },
   { id: 3, parent: 1, label: 'Айтем 3' },

@@ -7,7 +7,7 @@ import {
   TreeStoreError,
   isTreeStoreError,
 } from './TreeStoreError'
-import { AppError } from './AppError'
+import { AppError } from '@shared/lib/errors'
 
 describe('TreeStoreError', () => {
   it('наследует AppError', () => {
