@@ -72,6 +72,9 @@ npm run test:watch
 
 # тесты с покрытием
 npm run test:coverage
+
+# проверка архитектурных границ FSD
+npm run lint
 ```
 
 ## Что реализовано
@@ -107,18 +110,18 @@ import { TreeStore } from '@entities/tree-item'
 - «Группа» — у узла есть дочерние элементы; «Элемент» — лист
 - Дерево по умолчанию полностью развёрнуто (`groupDefaultExpanded: -1`)
 
-### Обработка ошибок (`src/shared/lib/errors`)
+### Обработка ошибок
 
 Расширяемая иерархия от `Error`:
 
-- `AppError` — базовая (code, context, cause)
-- `TreeStoreError` → `TreeItemNotFoundError`, `TreeItemDuplicateError`, `TreeItemInvalidParentError`, `TreeItemCircularReferenceError`
+- `shared/lib/errors`: `AppError` — базовая (code, context, cause)
+- `entities/tree-item/lib/errors`: `TreeStoreError` → `TreeItemNotFoundError`, `TreeItemDuplicateError`, `TreeItemInvalidParentError`, `TreeItemCircularReferenceError`
 
 ### Тесты
 
 - `TreeStore` — все методы, порядок родителей, CRUD, циклы, граничные случаи
 - `mapStoreToGridRows`, `useTreeGrid`, Vue-компоненты (с моком Ag Grid)
-- `AppError` / `TreeStoreError`
+- `AppError` / `TreeStoreError` (на уровне entity)
 - `TreeStore.benchmark.test.ts` — замеры на ~110k узлах (долгий прогон, можно исключить при обычном `npm test`)
 
 ## Архитектура (FSD)
@@ -136,10 +139,13 @@ src/
 ├── widgets/
 │   └── tree-items-table/   # Ag Grid + маппинг store → строки
 ├── entities/
-│   └── tree-item/          # TreeStore, начальные данные
+│   └── tree-item/          # TreeStore + доменные ошибки
+├── features/
+│   └── init-tree-items/    # сценарий инициализации TreeStore
 └── shared/
-    ├── lib/errors/         # классы ошибок
-    └── types/              # TreeItem, TreeItemId
+    ├── lib/errors/         # AppError
+    ├── config/mock/        # mock-данные для демо и тестов
+    └── model/              # TreeItem, TreeItemId
 ```
 
 ### Алиасы путей
@@ -151,7 +157,7 @@ src/
 | `@app` | app | `src/app` |
 | `@pages` | pages | `src/pages` |
 | `@widgets` | widgets | `src/widgets` |
-| `@features` | features | `src/features` (зарезервирован, пока не используется) |
+| `@features` | features | `src/features` |
 | `@entities` | entities | `src/entities` |
 | `@shared` | shared | `src/shared` |
 
@@ -162,6 +168,7 @@ src/
 | `npm run dev` | dev-сервер Vite |
 | `npm run build` | проверка типов + production build |
 | `npm run preview` | локальный просмотр `dist/` |
+| `npm run lint` | Steiger: FSD-архитектурные правила (включая `@x`-нотацию) |
 | `npm test` | unit-тесты (Vitest) |
 | `npm run test:watch` | тесты с перезапуском |
 | `npm run test:coverage` | отчёт покрытия (v8) |

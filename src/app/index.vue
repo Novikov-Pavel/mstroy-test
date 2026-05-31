@@ -1,7 +1,7 @@
 <template>
-  <TreeItemsPage />
+  <RouterView />
 </template>
 
 <script setup lang="ts">
-import { TreeItemsPage } from '@pages/tree-items'
+import { RouterView } from 'vue-router'
 </script>
