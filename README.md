@@ -4,14 +4,14 @@
 
 ## Стек
 
-| Технология | Назначение |
-|------------|------------|
-| Vue 3 (Composition API, `<script setup>`) | UI |
-| TypeScript | типизация |
-| Vite 8 | сборка и dev-сервер |
-| AG Grid Community + Enterprise + Vue 3 | таблица с tree data |
-| Vitest + Vue Test Utils + jsdom | unit-тесты |
-| Feature-Sliced Design (FSD) | структура `src/` |
+| Технология                                | Назначение          |
+| ----------------------------------------- | ------------------- |
+| Vue 3 (Composition API, `<script setup>`) | UI                  |
+| TypeScript                                | типизация           |
+| Vite 8                                    | сборка и dev-сервер |
+| AG Grid Community + Enterprise + Vue 3    | таблица с tree data |
+| Vitest + Vue Test Utils + jsdom           | unit-тесты          |
+| Feature-Sliced Design (FSD)               | структура `src/`    |
 
 ## Быстрый старт
 
@@ -83,21 +83,21 @@ npm run lint
 
 Класс на TypeScript с индексами `Map` для быстрого доступа **O(1)** к узлу и **O(число потомков)** к поддереву без лишних полных обходов массива.
 
-| Метод | Описание |
-|-------|----------|
-| `getAll()` | исходный массив элементов хранилища |
-| `getItem(id)` | элемент по `id` (число или строка) |
-| `getChildren(id)` | прямые дочерние элементы |
-| `getAllChildren(id)` | все потомки на любой глубине |
-| `getAllParents(id)` | цепочка от узла к корню (**порядок важен**: элемент → … → корень) |
-| `addItem(item)` | добавление узла |
-| `removeItem(id)` | удаление узла и всего поддерева |
-| `updateItem(item)` | обновление полей и смена родителя |
+| Метод                | Описание                                                          |
+| -------------------- | ----------------------------------------------------------------- |
+| `getAll()`           | исходный массив элементов хранилища                               |
+| `getItem(id)`        | элемент по `id` (число или строка)                                |
+| `getChildren(id)`    | прямые дочерние элементы                                          |
+| `getAllChildren(id)` | все потомки на любой глубине                                      |
+| `getAllParents(id)`  | цепочка от узла к корню (**порядок важен**: элемент → … → корень) |
+| `addItem(item)`      | добавление узла                                                   |
+| `removeItem(id)`     | удаление узла и всего поддерева                                   |
+| `updateItem(item)`   | обновление полей и смена родителя                                 |
 
 Импорт для автотестов проверяющих:
 
 ```ts
-import { TreeStore } from '@entities/tree-item'
+import { TreeStore } from "@entities/tree-item";
 ```
 
 ### Таблица AG Grid (`src/widgets/tree-items-table`)
@@ -152,26 +152,26 @@ src/
 
 В FSD алиасы задаются только для **слоёв** (layers), не для сегментов вроде `model`, `ui`, `lib`.
 
-| Алиас | Слой | Путь |
-|-------|------|------|
-| `@app` | app | `src/app` |
-| `@pages` | pages | `src/pages` |
-| `@widgets` | widgets | `src/widgets` |
+| Алиас       | Слой     | Путь           |
+| ----------- | -------- | -------------- |
+| `@app`      | app      | `src/app`      |
+| `@pages`    | pages    | `src/pages`    |
+| `@widgets`  | widgets  | `src/widgets`  |
 | `@features` | features | `src/features` |
 | `@entities` | entities | `src/entities` |
-| `@shared` | shared | `src/shared` |
+| `@shared`   | shared   | `src/shared`   |
 
 ## Скрипты npm
 
-| Команда | Действие |
-|---------|----------|
-| `npm run dev` | dev-сервер Vite |
-| `npm run build` | проверка типов + production build |
-| `npm run preview` | локальный просмотр `dist/` |
-| `npm run lint` | Steiger: FSD-архитектурные правила (включая `@x`-нотацию) |
-| `npm test` | unit-тесты (Vitest) |
-| `npm run test:watch` | тесты с перезапуском |
-| `npm run test:coverage` | отчёт покрытия (v8) |
+| Команда                 | Действие                                                  |
+| ----------------------- | --------------------------------------------------------- |
+| `npm run dev`           | dev-сервер Vite                                           |
+| `npm run build`         | проверка типов + production build                         |
+| `npm run preview`       | локальный просмотр `dist/`                                |
+| `npm run lint`          | Steiger: FSD-архитектурные правила (включая `@x`-нотацию) |
+| `npm test`              | unit-тесты (Vitest)                                       |
+| `npm run test:watch`    | тесты с перезапуском                                      |
+| `npm run test:coverage` | отчёт покрытия (v8)                                       |
 
 ## Особенности реализации
 

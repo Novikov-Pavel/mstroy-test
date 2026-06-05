@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
-import { setupProviders } from '@app/providers'
+import { router } from './providers/router'
+import './providers/ag-grid'
 import '@app/styles/global.css'
 import App from './index.vue'
 
 export const app = createApp(App)
-setupProviders(app)
+app.use(router)
